@@ -34,3 +34,4 @@ node_modules
 
 #webstorm directory
 .idea
+server/config.js

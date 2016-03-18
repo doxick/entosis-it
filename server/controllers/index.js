@@ -11,7 +11,7 @@ Router.get('/', function (req, res) {
             return campaigns.sort((a,b) => {
                 var _a = new Date(a.attributes.start),
                     _b = new Date(b.attributes.start);
-                return _a < _b ? 1 : _a > _b ? -1 : 0;
+                return _a < _b ? -1 : _a > _b ? 1 : 0;
             });
         });
     }).then((campaigns)=> {
