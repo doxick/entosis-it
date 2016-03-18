@@ -4,17 +4,17 @@ var Express = require('express'),
 
 Router.get('/create/:campaignId', function (req, res) {
     var campaignId = req.params.campaignId,
-        data = {};
+        output = {};
     Factory
         .Create('sovcampaign',campaignId)
         .then(function(campaign) {
-            data.campaign = campaign.get();
+            output.campaign = campaign.get();
             return Factory.Create('sovstructure', campaign.get('structure.id'));
         })
         .then(function(structure) {
             // todo
-            data.structure = structure.get();
-            res.render('project/create',{data: data});
+            output.structure = structure.get();
+            res.render('project/create', output);
         })
         .catch(function(){
             console.log('campaign doesnt exist');
