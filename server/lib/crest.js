@@ -25,7 +25,7 @@ var Request = RateLimit(function(options,data,callback){
 },1000 / Config.crest.rateLimit);
 
 function Call(route, cacheTime) {
-    cacheTime = (cacheTime || 60) * 60;
+    cacheTime = (cacheTime || 60) * 60 * 1000;
     return new Promise(function(resolve, reject){
         RedisClient.get(route, function(err, reply){
             if (reply && reply.exceptionType) return reject(reply);
