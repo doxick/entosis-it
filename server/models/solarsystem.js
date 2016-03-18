@@ -11,8 +11,6 @@ class Solarsystem extends CrestModel
   }
   parse(data)
   {
-    if (data == null)
-      return {};
     return {
       id: data.id,
       name: data.name,

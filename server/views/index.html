@@ -11,21 +11,21 @@
             <th>System</th>
             <th>Owner</th>
             <th>Time</th>
-            <th>Defender Score</th>
+            <th>ADM</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        {% for campaign in campaigns %}
-        <tr id="campaign-{{ campaign.id }}" class="timer_row" data-tags="active" style="display: table-row;">
-            <td class="type">{{ campaign.typeName }}</td>
-            <td class="region">{{ campaign.region.name }}</td>
-            <td class="constellation">{{ campaign.constellation.name }}</td>
-            <td class="system">{{ campaign.system.name }}</td>
-            <td class="owner">{{ campaign.defender.name }}</td>
-            <td class="time">{{ campaign.start }}</td>
-            <td class="defended">{{ campaign.defender.score }}</td>
-            <td><a href="/project/create/{{campaign.id}}" class="btn btn-primary pull-right">Start Project</a></td>
+        {% for row in campaigns %}
+        <tr id="campaign-{{ row.campaign.id }}" class="timer_row" data-tags="active" style="display: table-row;">
+            <td class="type">{{ row.campaign.get('typeName') }}</td>
+            <td class="region">{{ row.region.get('name') }}</td>
+            <td class="constellation">{{ row.constellation.get('name') }}</td>
+            <td class="system">{{ row.system.get('name') }}</td>
+            <td class="owner">{{ row.campaign.get('defender.name') }}</td>
+            <td class="time">{{ row.campaign.get('start') }}</td>
+            <td class="defended">{{ row.structure.get('vulnerability.level') }}</td>
+            <td><a href="/project/create/{{row.campaign.id}}" class="btn btn-primary pull-right">Start Project</a></td>
         </tr>
         {% endfor %}
         </tbody>

@@ -5,6 +5,8 @@ module.exports = {
     {
         if (! Cache[constructor])
             Cache[constructor] = {};
+        if (Cache[constructor][id])
+            return Cache[constructor][id];
         var obj = new constructor(id);
         Cache[constructor][id] = obj;
         return obj;

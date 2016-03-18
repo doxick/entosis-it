@@ -10,10 +10,18 @@ class CrestModel extends Model
         super(id);
         this.type = type;
         this.__sync = sync;
+        this.__syncTime = 0;
+        this.__syncing = null;
+        this.__synced = new Promise(resolve => resolve(this));
     }
+    get timeout() { return 60; } // default 60 minutes
     sync()
     {
-        return this.__sync(this.id).then(data=>{
+        if (this.__syncing)
+            return this.__syncing;
+        if (Date.now() - this.__syncTime < this.timeout * 60000)
+            return this.__synced;
+        this.__syncing = this.__sync(this.id).then(data=>{
             if(data == null)
                 return {};
             data = this.parse(data);
@@ -28,7 +36,12 @@ class CrestModel extends Model
                     data[key] = new Collection(items);
                 });
             })).then(()=>data);
-        }).then(data=>this.set(data));
+        }).then(data=>{
+            this.__syncTime = Date.now();
+            this.__syncing = null;
+            return this.set(data);
+        });
+        return this.__syncing;
     }
     parse(data)
     {
