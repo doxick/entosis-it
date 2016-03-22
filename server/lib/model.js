@@ -27,8 +27,12 @@ class Model extends EventEmitter
         var curVal = this.attributes[key];
         if (this.collections[key])
         {
-            if (curVal && isEqual(curVal.keys, value.keys))
+            if (!curVal)
+                return ((this.attributes[key] = value),true);
+            if (isEqual(curVal.keys, value.keys))
                 return false;
+            this.attributes[key].set(value.get());
+            return true;
         }
         else if (isEqual(curVal, value))
             return false;

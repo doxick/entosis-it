@@ -2,8 +2,71 @@
 
 {% block content %}
 <div class="container">
-    <form action="" class="form" method="post">
-{{ JSON.stringify(data) }}
-    </form>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h3>Create a new project</h3>
+            <form action="" class="form form-horizontal" method="post">
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Region</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="region" value="{{region.name}}">
+                    </div>
+                    <input type="hidden" name="regionId" value="{{region.id}}">
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Constellation</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="constellation" value="{{constellation.name}}">
+                    </div>
+                    <input type="hidden" name="constellationId" value="{{constellation.id}}">
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">System</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="system" value="{{campaign["system.name"]}}">
+                    </div>
+                    <input type="hidden" name="systemId" value="{{campaign["system.id"]}}">
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Structure</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="structure" value="{{structure["type.name"]}}">
+                    </div>
+                    <input type="hidden" name="structureId" value="{{structure.id}}">
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">ADM</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="adm" value="1.0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Team</label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label for="inp-team-1">
+                                <input type="radio" id="inp-team-1" name="team" value="attacker" checked> Attackers
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="inp-team-2">
+                                <input type="radio" id="inp-team-2" name="team" value="defender"> Defenders
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12"><input type="submit" value="Create" class="btn btn-primary pull-right"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--
+    {{ JSON.stringify(data) }}
+    -->
 </div>
 {% endblock %}

@@ -43,6 +43,10 @@ class Collection extends EventEmitter
         for(var i = 0, l = models.length; i < l; i++)
             this.add(models[i]);
     }
+    get()
+    {
+        return this.__items.slice();
+    }
     get keys() {
         return this.__items.map(items=>item.id).sort();
     }
