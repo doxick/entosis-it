@@ -1,7 +1,7 @@
 module.exports = {
     redis: {
-        host: '<redis host>',
-        password: '<redis password>'
+        host: 'toaster.nightware.nl',
+        password: 'ToasterRedisCache'
     },
     crest: {
         host: 'public-crest.eveonline.com',
@@ -14,5 +14,9 @@ module.exports = {
     },
     http: {
         port: 10000
+    },
+    session: {
+        secret: 'this is my secret',
+        maxAge: 60 * 60 * 1000
     }
 };

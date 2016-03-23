@@ -11,6 +11,12 @@ module.exports = {
         Cache[constructor][id] = obj;
         return obj;
     },
+    Get(constructor, id)
+    {
+        if (! Cache[constructor])
+            return;
+        return Cache[constructor][id];
+    },
     Remove(object)
     {
         if (Cache[object.constructor])

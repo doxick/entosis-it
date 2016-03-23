@@ -26,7 +26,15 @@ class Collection extends EventEmitter
     }
     contains(model)
     {
+        if (typeof(model) != "object")
+            return this.__items.some(function(item) { return item.id == model; });
         return this.__items.indexOf(model) > -1;
+    }
+    get(id)
+    {
+        var obj = null;
+        this.__items.some(item => ((item.id == id && (obj = item)),item.id == id));
+        return obj;
     }
     set(models)
     {
@@ -43,12 +51,12 @@ class Collection extends EventEmitter
         for(var i = 0, l = models.length; i < l; i++)
             this.add(models[i]);
     }
-    get()
+    items()
     {
         return this.__items.slice();
     }
     get keys() {
-        return this.__items.map(items=>item.id).sort();
+        return this.__items.map(item=>item.id).sort();
     }
     get length() {
         return this.__items.length;

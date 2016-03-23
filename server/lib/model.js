@@ -1,6 +1,6 @@
 "use strict";
+var Collection = require('./collection');
 var EventEmitter = require('events').EventEmitter;
-
 var isArray = Array.isArray;
 
 function isEqual(a,b)
@@ -21,6 +21,9 @@ class Model extends EventEmitter
         this.binds.forEach(bind=>{
             this[bind] = this[bind].bind(this);
         });
+        Object.keys(this.collections).forEach(key=>{
+            this.attributes[key] = new Collection();
+        });
     }
     __set(key,value)
     {
@@ -31,7 +34,7 @@ class Model extends EventEmitter
                 return ((this.attributes[key] = value),true);
             if (isEqual(curVal.keys, value.keys))
                 return false;
-            this.attributes[key].set(value.get());
+            this.attributes[key].set(value.items());
             return true;
         }
         else if (isEqual(curVal, value))

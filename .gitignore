@@ -21,7 +21,7 @@ coverage
 .lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+static
 
 # Dependency directory
 node_modules
@@ -34,4 +34,3 @@ node_modules
 
 #webstorm directory
 .idea
-server/config.js

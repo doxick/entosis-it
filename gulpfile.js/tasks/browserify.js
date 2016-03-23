@@ -69,7 +69,7 @@ gulp.task('browserify', function(done) {
 });
 
 gulp.task('browserify-watch',function(done){
-    return build(done);
+    return build(done, function() {});
 });
 
 module.exports = {

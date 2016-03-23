@@ -46,8 +46,6 @@ Router.get('/', function (req, res) {
         res.render('index', {
             campaigns: output
         });
-    }).catch((err)=>{
-        console.log('ERROR: ', err.stack);
     })
 });
 Router.use('/project', require('./project'));

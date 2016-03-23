@@ -23,7 +23,7 @@ class CrestModel extends Model
             return this.__synced;
         this.__syncing = this.__sync(this.id).then(data=>{
             if(data == null)
-                return {};
+                throw new Error("Model not found: " + this.type + "(" + this.id + ")");
             data = this.parse(data);
             var keys = Object.keys(this.collections);
             if (keys.length == 0)

@@ -12,6 +12,17 @@ module.exports = {
         var obj = ObjectPool.Create.apply(null, params);
         return obj.sync();
     },
+    Get: function(type, id)
+    {
+        if (! Constructors[type])
+            return;
+        var obj =  ObjectPool.Get(Constructors[type], id);
+        if (! obj)
+            return new Promise((resolve,reject)=>{
+                reject('Factory::Get('+type+','+id+') does not exist')
+            });
+        return obj.sync();
+    },
     AddConstructor: function(type, constructor)
     {
         Constructors[type] = constructor;
