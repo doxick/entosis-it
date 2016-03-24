@@ -1,18 +1,18 @@
 "use strict";
 var CrestModel = require('../lib/crestmodel'),
-    Factory = require('../lib/factory');
+    Factory = require('../lib/factory'),
+    Collection = require('../lib/collection');
 
 class Project extends CrestModel {
     constructor(id, campaignId)
     {
         super(id,'project',Project.prototype.customSync);
         this.campaignId = campaignId;
+        this.pilots = new Collection();
     }
-
     customSync()
     {
         return new Promise((resolve, reject) => {
-            var data = {};
             Factory.Create('sovcampaign',this.campaignId).then(campaign=>{
                 if (this.campaign != campaign)
                 {
@@ -32,8 +32,6 @@ class Project extends CrestModel {
                     this.systems = systems;
                     // todo: bind events so that changes will be propagated
                 }
-
-                console.log('Project synced', this);
                 resolve(this);
             });
         });
