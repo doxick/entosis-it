@@ -23,7 +23,7 @@
             <td class="system">{{ row.system.get('name') }}</td>
             <td class="owner">{{ row.campaign.get('defender.name') || '' }}</td>
             <td class="time"><span class="js-timer" data-time="{{ row.campaign.get('start') }}"></span></td>
-            <td><a href="/project/create/{{row.campaign.id}}" class="btn btn-primary pull-right">Start Project</a></td>
+            <td>{% if row.campaign.get('start')|secondsFromNow < 3600 %}<a href="/project/create/{{row.campaign.id}}" class="btn btn-primary pull-right">Start Project</a>{% endif %}</td>
         </tr>
         {% endfor %}
         </tbody>

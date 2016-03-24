@@ -10,7 +10,7 @@ class Region extends CrestModel
         super(id,"region",Crest.getRegion);
     }
     get collections() { return {constellations: 'constellation'}; }
-
+    get timeout() { return 7 * 24 * 60; };
     parse(data)
     {
         return {

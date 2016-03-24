@@ -10,7 +10,7 @@ class Constellation extends CrestModel
         super(id,"constellation",Crest.getConstellation);
     }
     get collections() { return {systems: 'solarsystem'}; }
-
+    get timeout() { return 7 * 24 * 60; };
     parse(data)
     {
         var regionId = data.region.href.split('/');

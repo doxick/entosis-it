@@ -9,6 +9,7 @@ class Solarsystem extends CrestModel
   {
     super(id,"solarsystem",Crest.getSystem);
   }
+  get timeout() { return 7 * 24 * 60; }
   parse(data)
   {
     return {

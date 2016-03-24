@@ -13,6 +13,7 @@ class SovStructure extends CrestModel
 
     parse(data)
     {
+console.log(data);
         return {
             id: data.structureID,
             'alliance.id': data.alliance.id,

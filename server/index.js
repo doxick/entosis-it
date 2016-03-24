@@ -45,3 +45,10 @@ App.use(require('./controllers'));
 App.listen(Config.http.port,function(){
     console.log('Application started on port', Config.http.port);
 });
+
+
+
+
+Swig.setFilter('secondsFromNow',function(input) {
+    return (new Date(input) - Date.now()) / 1000;
+});
