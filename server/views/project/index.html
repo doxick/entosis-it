@@ -5,8 +5,27 @@
 <div class="fluid-container app-entosis-project" data-project-id="{{project.id}}" data-pilot-id="{{pilot.get('id')}}">
     <h3>Entosis: {{project.id}}</h3>
     <div class="row">
-        <div class="col-sm-3 well">
-
+        <div class="col-sm-3">
+            <div class="well">
+                <dl class="dl-horizontal">
+                    <dt>Region</dt>
+                    <dd>{{project.region.get('name')}}</dd>
+                    <dt>Constellation</dt>
+                    <dd>{{project.constellation.get('name')}}</dd>
+                    <dt>System</dt>
+                    <dd>{{project.system.get('name')}}</dd>
+                    <dt>Structure</dt>
+                    <dd>{{project.structure.get('type.name')}}</dd>
+                    <dt>Owner</dt>
+                    <dd>{{project.structure.get('alliance.name')}}</dd>
+                </dl>
+            </div>
+            <div class="well">
+                <h4>Pilots</h4>
+                <ul id="project-pilots">
+                    <li>NL1GHT3D</li>
+                </ul>
+            </div>
         </div>
     </div>
     <!--

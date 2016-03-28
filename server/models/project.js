@@ -20,16 +20,26 @@ class Project extends CrestModel {
                     // todo: bind events so that changes will be propagated
                 }
                 return Factory.Create('constellation',campaign.get('constellation.id'));
-            }).then(constellation=>{
-                if (this.constellation != constellation)
-                {
+            }).then(constellation=> {
+                if (this.constellation != constellation) {
                     this.constellation = constellation;
                     // todo: bind events so that changes will be propagated
                 }
                 var systems = this.constellation.get('systems');
-                if (this.systems != systems)
-                {
+                if (this.systems != systems) {
                     this.systems = systems;
+                    // todo: bind events so that changes will be propagated
+                }
+                return Factory.Create('region',this.constellation.get('region.id'));
+            }).then(region=> {
+                if (this.region != region) {
+                    this.region = region;
+                    // todo: bind events so that changes will be propagated
+                }
+                return Factory.Create('sovstructure', this.campaign.get('structure.id'));
+            }).then(structure=> {
+                if (this.structure != structure) {
+                    this.structure = structure;
                     // todo: bind events so that changes will be propagated
                 }
                 resolve(this);
