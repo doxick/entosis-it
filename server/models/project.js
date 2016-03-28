@@ -42,7 +42,7 @@ class Project extends CrestModel {
                     this.structure = structure;
                     // todo: bind events so that changes will be propagated
                 }
-                resolve(this);
+                resolve({});
             });
         });
     }
